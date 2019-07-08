@@ -3,14 +3,19 @@ package com.example.playground.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import com.example.playground.R
 import com.example.playground.main.application.MainApplication
 import com.example.playground.main.state.State
 import com.example.playground.signin.SignInActivity
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.api.GoogleApiClient
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
     @field:[Inject]
     internal lateinit var presenter: MainActivityPresenter
@@ -33,14 +38,15 @@ class MainActivity : AppCompatActivity() {
 
     fun render(state: State) {
         when (state) {
-            is State.startLoading -> {
+            is State.StartLoading -> {
 
             }
-            is State.finishLoading -> {
+            is State.FinishLoading -> {
 
             }
-            is State.launchSignInPage -> {
+            is State.LaunchSignInPage -> {
                 startActivity(Intent(this@MainActivity, SignInActivity::class.java))
+                finish()
             }
         }
     }
@@ -49,5 +55,27 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         Timber.v("onDestroy")
         presenter.destroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when(item?.itemId) {
+            R.id.menu_sign_out -> {
+                presenter.signOut()
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    override fun onConnectionFailed(result: ConnectionResult) {
+        Timber.e("onConnectionFailed, $result")
+        Toast.makeText(this@MainActivity, "onConnectionFailed!", Toast.LENGTH_SHORT )
     }
 }

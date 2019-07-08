@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#fd5c63</color>
+    <color name="colorPrimaryDark">#ff4f81</color>
+    <color name="colorAccent">#ffc168</color>
+
+    // sign in
+    <color name="colorSignInWithGoogle">#db4f33</color>
+    <color name="colorSignInWithFacebook">#3b5998</color>
+    <color name="colorSignInTitle">#ffffff</color>
+    <color name="colorSignInBg">#002b55</color>
 </resources>

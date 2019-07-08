@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Playground</string>
+
+     <!--main menu-->
+    <string name="main_menu_sign_out">Sign out</string>
+
+    <string name="sign_in_title">ENTER THE PLAYGROUND</string>
+    <string name="sign_in_description">Let me share this whole new world with you</string>
 </resources>
