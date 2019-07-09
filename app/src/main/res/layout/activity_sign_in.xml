@@ -74,8 +74,8 @@
             app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-                android:layout_width="17dp"
-                android:layout_height="40dp"
+                android:layout_width="15dp"
+                android:layout_height="60dp"
                 android:src="@drawable/ic_facebook"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="30dp"/>
@@ -91,7 +91,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-            android:id="@+id/SignInGoogleButton"
+            android:id="@+id/signInGoogleButton"
             android:layout_width="300dp"
             android:layout_height="65dp"
             android:layout_marginTop="20dp"
