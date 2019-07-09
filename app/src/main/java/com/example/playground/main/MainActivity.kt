@@ -29,10 +29,6 @@ class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         super.onCreate(savedInstanceState)
         Timber.v("onCreate")
         setContentView(R.layout.activity_main)
-        val host: NavHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
-        val navController = host.navController
-        setupBottomNavMenu(navController)
         initViews()
         initInjections()
         presenter.create()
@@ -41,11 +37,10 @@ class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
     private fun initViews() {
         val navHost = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
-
+        setupBottomNavMenu(navHost.navController)
     }
 
     private fun setupBottomNavMenu(navController: NavController) {
-        Timber.d("setupBottomNavMenu")
         bottom_nav_view.setupWithNavController(navController)
     }
 
