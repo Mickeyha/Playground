@@ -4,10 +4,28 @@
     <color name="colorPrimaryDark">#ff4f81</color>
     <color name="colorAccent">#ffc168</color>
 
-    // sign in
+    <!--main activity-->
+    <color name="colorMainBg">#ffffff</color>
+    <color name="colorBottomNavSeparator">#ffffff</color>
+    <color name="colorBottomNavBg">#388ed1</color>
+
+    <!--sign in-->
     <color name="colorSignInWithGoogle">#db4f33</color>
     <color name="colorSignInWithFacebook">#3b5998</color>
     <color name="colorSignInTitle">#707070</color>
     <color name="colorSignInBg">#ffffff</color>
     <color name="colorSignIn3rdText">#ffffff</color>
+
+    <!--city-->
+    <color name="colorCityBg">#ffffff</color>
+    <color name="colorCityTitle">#707070</color>
+
+    <!--eat-->
+    <color name="colorEatBg">#ffffff</color>
+    <color name="colorEatTitle">#707070</color>
+
+    <!--shop-->
+    <color name="colorShopBg">#ffffff</color>
+    <color name="colorShopTitle">#707070</color>
+
 </resources>

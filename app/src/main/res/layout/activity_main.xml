@@ -5,6 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorMainBg"
         tools:context=".main.MainActivity">
 
     <TextView
@@ -16,4 +17,22 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@color/colorBottomNavBg"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:menu="@menu/nav_drawer_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/colorBottomNavSeparator"
+            app:layout_constraintBottom_toTopOf="@id/nav_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

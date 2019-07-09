@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/city_des"
+            android:icon="@drawable/ic_twotone_location_on_24px"
+            android:title="@string/nav_des_city"/>
+    <item
+            android:id="@+id/chat_des"
+            android:icon="@drawable/ic_twotone_message_24px"
+            android:title="@string/nav_des_chat"/>
+    <item
+            android:id="@+id/profile_des"
+            android:icon="@drawable/ic_twotone_account_circle_24px"
+            android:title="@string/nav_des_account"/>
+</menu>

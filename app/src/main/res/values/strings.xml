@@ -4,8 +4,24 @@
      <!--main menu-->
     <string name="main_menu_sign_out">Sign out</string>
 
+    <!--sign in-->
     <string name="sign_in_title">ENTER THE PLAYGROUND</string>
     <string name="sign_in_description">Let me share this whole new world with you</string>
     <string name="sign_in_fb">Sign in with Facebook</string>
     <string name="sign_in_google">Sign in with Google</string>
+
+    <!--city guide-->
+    <string name="city_title">City Guide</string>
+
+    <!--eat-->
+    <string name="eat_title">Eat Guide</string>
+
+    <!--shop-->
+    <string name="shop_title">Shop Guide</string>
+
+    <!--nav menu-->
+    <string name="nav_des_city">City</string>
+    <string name="nav_des_chat">Chat</string>
+    <string name="nav_des_account">Account</string>
+
 </resources>
