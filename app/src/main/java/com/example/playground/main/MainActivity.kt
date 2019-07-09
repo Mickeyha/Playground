@@ -6,12 +6,17 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.playground.R
 import com.example.playground.main.application.MainApplication
 import com.example.playground.main.state.State
 import com.example.playground.signin.SignInActivity
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -24,8 +29,24 @@ class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         super.onCreate(savedInstanceState)
         Timber.v("onCreate")
         setContentView(R.layout.activity_main)
+        val host: NavHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
+        val navController = host.navController
+        setupBottomNavMenu(navController)
+        initViews()
         initInjections()
         presenter.create()
+    }
+
+    private fun initViews() {
+        val navHost = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
+
+    }
+
+    private fun setupBottomNavMenu(navController: NavController) {
+        Timber.d("setupBottomNavMenu")
+        bottom_nav_view.setupWithNavController(navController)
     }
 
     private fun initInjections() {

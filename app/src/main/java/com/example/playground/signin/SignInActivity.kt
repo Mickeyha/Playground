@@ -6,8 +6,6 @@ import android.graphics.LightingColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import android.widget.Toast
 import com.example.playground.R
 import com.example.playground.main.MainActivity
@@ -42,8 +40,8 @@ class SignInActivity : AppCompatActivity(),
     }
 
     private fun initViews() {
-        signInImage.colorFilter = LightingColorFilter(Color.WHITE, Color.DKGRAY)
-        clickSignInWithGoogleIntent = signInGoogleButton.clicks()
+        sign_in_image.colorFilter = LightingColorFilter(Color.WHITE, Color.DKGRAY)
+        clickSignInWithGoogleIntent = sign_in_google_button.clicks()
     }
 
     private fun initInjects() {
