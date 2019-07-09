@@ -3,9 +3,11 @@ package com.example.playground.signin
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import com.example.playground.R
 import com.example.playground.signin.state.State
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
@@ -22,13 +24,12 @@ class SignInActivityPresenter @Inject constructor(private val view: SignInActivi
 
     // firebase auth
     var firebaseAuth: FirebaseAuth
-    var googleApiClient: GoogleApiClient
+    private lateinit var googleApiClient: GoogleApiClient
 
     init {
         compositeDisposable += view.clickSignInWithGoogleIntent.subscribe { signIn() }
 
         firebaseAuth = FirebaseAuth.getInstance()
-        googleApiClient = GoogleApiClient.Builder(context).enableAutoManage(view, view).addApi(Auth.GOOGLE_SIGN_IN_API).build()
     }
 
     private fun signIn() {
@@ -38,7 +39,15 @@ class SignInActivityPresenter @Inject constructor(private val view: SignInActivi
     }
 
     fun create() {
-
+        // Configure Google Sign In
+        val googleSignInOption = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(context.getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleApiClient = GoogleApiClient.Builder(context)
+            .enableAutoManage(view, view)
+            .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOption)
+            .build()
     }
 
     fun destroy() {
