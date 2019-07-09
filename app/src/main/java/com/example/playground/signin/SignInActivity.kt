@@ -19,7 +19,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        sign_in_image.colorFilter = LightingColorFilter(Color.WHITE, Color.WHITE)
+        signInImage.colorFilter = LightingColorFilter(Color.WHITE, Color.DKGRAY)
     }
 
     private fun initInjects() {

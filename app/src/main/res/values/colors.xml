@@ -7,6 +7,7 @@
     // sign in
     <color name="colorSignInWithGoogle">#db4f33</color>
     <color name="colorSignInWithFacebook">#3b5998</color>
-    <color name="colorSignInTitle">#ffffff</color>
-    <color name="colorSignInBg">#002b55</color>
+    <color name="colorSignInTitle">#707070</color>
+    <color name="colorSignInBg">#ffffff</color>
+    <color name="colorSignIn3rdText">#ffffff</color>
 </resources>

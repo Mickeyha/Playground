@@ -6,4 +6,6 @@
 
     <string name="sign_in_title">ENTER THE PLAYGROUND</string>
     <string name="sign_in_description">Let me share this whole new world with you</string>
+    <string name="sign_in_fb">Sign in with Facebook</string>
+    <string name="sign_in_google">Sign in with Google</string>
 </resources>
