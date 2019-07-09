@@ -67,11 +67,13 @@ class SignInActivityPresenter @Inject constructor(private val view: SignInActivi
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount?) {
         Timber.d("firebaseAuthWithGoogle, account = $account")
 
+        view.render(State.StartLoading)
         val authCredential: AuthCredential = GoogleAuthProvider.getCredential(account?.idToken, null)
         firebaseAuth.signInWithCredential(authCredential)
             .addOnCompleteListener (view) {
                 Timber.d("signInWithCredential:onComplete: ${it.isSuccessful}")
 
+                view.render(State.FinishLoading)
                 if (!it.isSuccessful) {
                     Timber.w("signInWithCredential $it.exception")
                     Toast.makeText(context, "signInWithCredential", Toast.LENGTH_SHORT)

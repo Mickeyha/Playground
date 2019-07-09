@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.LightingColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.playground.R
 import com.example.playground.main.MainActivity
@@ -53,10 +54,10 @@ class SignInActivity : AppCompatActivity(),
     fun render(state: State) {
         when (state) {
             is State.StartLoading -> {
-
+                progressBar.visibility = View.VISIBLE
             }
             is State.FinishLoading -> {
-
+                progressBar.visibility = View.GONE
             }
             is State.LaunchSingInWithGoogle -> {
                 startActivityForResult(state.intent, RC_SIGN_IN)
