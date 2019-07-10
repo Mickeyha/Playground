@@ -3,18 +3,18 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/main_navigation" app:startDestination="@id/city_des">
 
-    <fragment android:id="@+id/city_des" android:name="com.example.playground.cityguide.CityGuideFragment"
+    <fragment android:id="@+id/city_des" android:name="com.example.playground.ui.cityguide.CityGuideFragment"
               android:label="CityGuideFragment">
         <action android:id="@+id/action_cityGuideFragment_to_chatFragment" app:destination="@id/chat_des"
         />
     </fragment>
-    <fragment android:id="@+id/eatFragment" android:name="com.example.playground.eat.EatFragment"
+    <fragment android:id="@+id/eatFragment" android:name="com.example.playground.ui.eat.EatFragment"
               android:label="EatFragment"/>
-    <fragment android:id="@+id/shopFragment" android:name="com.example.playground.shop.ShopFragment"
+    <fragment android:id="@+id/shopFragment" android:name="com.example.playground.ui.shop.ShopFragment"
               android:label="ShopFragment"/>
-    <fragment android:id="@+id/profile_des" android:name="com.example.playground.account.AccountFragment"
+    <fragment android:id="@+id/profile_des" android:name="com.example.playground.ui.account.AccountFragment"
               android:label="AccountFragment"/>
-    <fragment android:id="@+id/chat_des" android:name="com.example.playground.chat.ChatFragment"
+    <fragment android:id="@+id/chat_des" android:name="com.example.playground.ui.chat.ChatFragment"
               android:label="ChatFragment">
         <action android:id="@+id/action_chatFragment_to_accountFragment" app:destination="@id/profile_des"/>
     </fragment>

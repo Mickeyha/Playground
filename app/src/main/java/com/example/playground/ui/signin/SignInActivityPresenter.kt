@@ -1,10 +1,10 @@
-package com.example.playground.signin
+package com.example.playground.ui.signin
 
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import com.example.playground.R
-import com.example.playground.signin.state.State
+import com.example.playground.ui.signin.state.State
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

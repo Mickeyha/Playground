@@ -1,4 +1,4 @@
-package com.example.playground.cityguide
+package com.example.playground.ui.cityguide
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.example.playground.signin.state
+package com.example.playground.ui.signin.state
 
 import android.content.Intent
 

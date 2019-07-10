@@ -1,4 +1,4 @@
-package com.example.playground.shop
+package com.example.playground.ui.shop
 
 import android.os.Bundle
 import android.view.LayoutInflater

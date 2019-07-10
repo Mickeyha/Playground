@@ -1,4 +1,4 @@
-package com.example.playground.signin
+package com.example.playground.ui.signin
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,8 +8,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.playground.R
-import com.example.playground.main.MainActivity
-import com.example.playground.signin.state.State
+import com.example.playground.ui.main.MainActivity
+import com.example.playground.ui.signin.state.State
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.jakewharton.rxbinding3.view.clicks

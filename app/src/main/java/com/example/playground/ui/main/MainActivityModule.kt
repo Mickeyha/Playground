@@ -1,4 +1,4 @@
-package com.example.playground.main
+package com.example.playground.ui.main
 
 import android.content.Context
 import dagger.Module

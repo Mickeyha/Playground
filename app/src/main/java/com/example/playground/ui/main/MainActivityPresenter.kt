@@ -1,7 +1,7 @@
-package com.example.playground.main
+package com.example.playground.ui.main
 
 import android.content.Context
-import com.example.playground.main.state.State
+import com.example.playground.ui.main.state.State
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
@@ -48,10 +48,8 @@ class MainActivityPresenter @Inject constructor(private val view: MainActivity,
         }
     }
 
-    fun signOut() {
-        firebaseAuth.signOut()
-        Auth.GoogleSignInApi.signOut(googleApiClient)
-        userName = ANONYMOUS
-        view.render(State.LaunchSignInPage)
+    fun stopGoogleClient() {
+        googleApiClient.stopAutoManage(view)
+        googleApiClient.disconnect()
     }
 }

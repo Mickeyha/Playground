@@ -1,4 +1,4 @@
-package com.example.playground.main
+package com.example.playground.ui.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +10,11 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.playground.R
-import com.example.playground.main.application.MainApplication
-import com.example.playground.main.state.State
-import com.example.playground.signin.SignInActivity
+import com.example.playground.ui.main.application.MainApplication
+import com.example.playground.ui.main.state.State
+import com.example.playground.ui.signin.SignInActivity
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -67,6 +66,11 @@ class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        presenter.stopGoogleClient()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         Timber.v("onDestroy")
@@ -76,18 +80,6 @@ class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when(item?.itemId) {
-            R.id.menu_sign_out -> {
-                presenter.signOut()
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
-        }
     }
 
     override fun onConnectionFailed(result: ConnectionResult) {

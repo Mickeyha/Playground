@@ -1,4 +1,4 @@
-package com.example.playground.signin
+package com.example.playground.ui.signin
 
 import android.content.Context
 import dagger.Module

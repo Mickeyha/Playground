@@ -1,4 +1,4 @@
-package com.example.playground.eat
+package com.example.playground.ui.eat
 
 import androidx.fragment.app.Fragment
 

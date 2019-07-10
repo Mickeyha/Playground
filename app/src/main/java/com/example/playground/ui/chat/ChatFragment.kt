@@ -1,4 +1,4 @@
-package com.example.playground.chat
+package com.example.playground.ui.chat
 
 import android.os.Bundle
 import android.view.LayoutInflater

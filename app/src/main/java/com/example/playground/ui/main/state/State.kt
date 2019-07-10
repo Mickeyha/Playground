@@ -1,4 +1,4 @@
-package com.example.playground.main.state
+package com.example.playground.ui.main.state
 
 sealed class State {
     object StartLoading: State()
