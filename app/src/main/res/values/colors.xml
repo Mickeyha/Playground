@@ -3,11 +3,12 @@
     <color name="colorPrimary">#fd5c63</color>
     <color name="colorPrimaryDark">#ff4f81</color>
     <color name="colorAccent">#ffc168</color>
+    <color name="grey">#808080</color>
 
     <!--main activity-->
     <color name="colorMainBg">#ffffff</color>
     <color name="colorBottomNavSeparator">#ffffff</color>
-    <color name="colorBottomNavBg">#388ed1</color>
+    <color name="colorBottomNavBg">#ffffff</color>
 
     <!--sign in-->
     <color name="colorSignInWithGoogle">#db4f33</color>
