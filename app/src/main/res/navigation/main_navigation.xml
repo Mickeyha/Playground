@@ -5,7 +5,8 @@
 
     <fragment android:id="@+id/city_des" android:name="com.example.playground.cityguide.CityGuideFragment"
               android:label="CityGuideFragment">
-        <action android:id="@+id/action_cityGuideFragment_to_chatFragment" app:destination="@id/chat_des"/>
+        <action android:id="@+id/action_cityGuideFragment_to_chatFragment" app:destination="@id/chat_des"
+        />
     </fragment>
     <fragment android:id="@+id/eatFragment" android:name="com.example.playground.eat.EatFragment"
               android:label="EatFragment"/>
