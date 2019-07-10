@@ -28,4 +28,9 @@
     <color name="colorShopBg">#ffffff</color>
     <color name="colorShopTitle">#707070</color>
 
+    <!--account-->
+    <color name="colorAccountBg">#ffffff</color>
+    <color name="colorAccountSignOutText">#1a1a1a</color>
+    <color name="colorAccountUserName">#1a1a1a</color>
+    <color name="colorAccountSeparator">#707070</color>
 </resources>
