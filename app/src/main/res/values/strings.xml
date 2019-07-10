@@ -24,4 +24,6 @@
     <string name="nav_des_chat">Chat</string>
     <string name="nav_des_account">Account</string>
 
+    <!--account-->
+    <string name="account_sign_out">Sign Out</string>
 </resources>
