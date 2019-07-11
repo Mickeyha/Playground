@@ -5,9 +5,15 @@
             android:icon="@drawable/ic_twotone_location_on_24px"
             android:title="@string/nav_des_city"/>
     <item
-            android:id="@+id/chat_des"
-            android:icon="@drawable/ic_twotone_message_24px"
-            android:title="@string/nav_des_chat"/>
+            android:id="@+id/eat_des"
+            android:icon="@drawable/ic_twotone_room_service_24px"
+            android:title="@string/nav_des_eat"/>
+
+    <item
+            android:id="@+id/shop_des"
+            android:icon="@drawable/ic_twotone_local_mall_24px"
+            android:title="@string/nav_des_shop"/>
+
     <item
             android:id="@+id/profile_des"
             android:icon="@drawable/ic_twotone_account_circle_24px"

@@ -21,9 +21,14 @@
 
     <!--nav menu-->
     <string name="nav_des_city">City</string>
-    <string name="nav_des_chat">Chat</string>
+    <string name="nav_des_eat">Eat</string>
+    <string name="nav_des_shop">Shop</string>
     <string name="nav_des_account">Account</string>
+
+    <string name="nav_des_chat">Chat</string>
 
     <!--account-->
     <string name="account_sign_out">Sign Out</string>
+
+
 </resources>

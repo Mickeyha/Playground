@@ -8,9 +8,9 @@
         <action android:id="@+id/action_cityGuideFragment_to_chatFragment" app:destination="@id/chat_des"
         />
     </fragment>
-    <fragment android:id="@+id/eatFragment" android:name="com.example.playground.feature.eat.EatFragment"
+    <fragment android:id="@+id/eat_des" android:name="com.example.playground.feature.eat.EatFragment"
               android:label="EatFragment"/>
-    <fragment android:id="@+id/shopFragment" android:name="com.example.playground.feature.shop.ShopFragment"
+    <fragment android:id="@+id/shop_des" android:name="com.example.playground.feature.shop.ShopFragment"
               android:label="ShopFragment"/>
     <fragment android:id="@+id/profile_des" android:name="com.example.playground.feature.account.AccountFragment"
               android:label="AccountFragment"/>

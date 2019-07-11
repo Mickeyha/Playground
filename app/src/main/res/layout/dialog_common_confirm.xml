@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="280dp"
+        android:padding="32dp"
+        android:layout_height="wrap_content">
+
+    <ImageView
+            android:id="@+id/error_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginEnd="110dp"
+            android:src="@drawable/ic_twotone_error_outline_24px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorDialogTitle"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/error_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Account is logged out"/>
+
+    <TextView
+            android:id="@+id/content_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorDialogContent"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/title_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="The current account is logged in on another device.The current account is logged in on another device."/>
+
+    <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12sp"
+            android:textColor="@color/colorDialogBtnCancelText"
+            android:background="@drawable/bg_button_cancel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content_text"
+            tools:text="Cancel"/>
+
+    <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12sp"
+            android:textColor="@color/colorDialogBtnConfirmText"
+            android:background="@drawable/bg_button_confirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content_text"
+            tools:text="Confirm"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

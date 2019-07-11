@@ -34,4 +34,11 @@
     <color name="colorAccountSignOutText">#1a1a1a</color>
     <color name="colorAccountUserName">#1a1a1a</color>
     <color name="colorAccountSeparator">#707070</color>
+
+    <!--common confirm dialog-->
+    <color name="colorDialogTitle">#1f1f1f</color>
+    <color name="colorDialogContent">#858585</color>
+    <color name="colorDialogBtnCancelText">#fd5c63</color>
+    <color name="colorDialogBtnConfirmText">#ffffff</color>
+
 </resources>
