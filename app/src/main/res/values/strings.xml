@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Playground</string>
 
-     <!--main menu-->
-    <string name="main_menu_sign_out">Sign out</string>
+    <!--main menu-->
+    <string name="main_menu_chat">Chat</string>
+    <!--chat main-->
+    <string name="chat_menu_sign_out">Sign out</string>
 
     <!--sign in-->
     <string name="sign_in_title">ENTER THE PLAYGROUND</string>

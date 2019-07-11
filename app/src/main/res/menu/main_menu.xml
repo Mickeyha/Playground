@@ -4,7 +4,7 @@
     <item
             android:id="@+id/menu_chat"
             android:icon="@drawable/ic_twotone_message_24px"
-            android:title="@string/nav_des_chat"
+            android:title="@string/main_menu_chat"
             android:iconTint="@color/grey"
             app:showAsAction="ifRoom"/>
 </menu>

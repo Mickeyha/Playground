@@ -22,22 +22,8 @@ class MainActivityPresenter @Inject constructor(private val view: MainActivity,
 
     private val compositeDisposable = CompositeDisposable()
 
-    // firebase
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
-    private val googleApiClient = GoogleApiClient.Builder(context).enableAutoManage(view, view).addApi(Auth.GOOGLE_SIGN_IN_API).build()
-
     fun create() {
         Timber.d("create")
-        userName = ANONYMOUS
-
-        // Not sign in yet, launch the SignInActivity
-        if (firebaseUser == null) {
-            view.render(State.LaunchSignInPage)
-        } else {    // get the pic of user
-            userName = firebaseUser.displayName
-            // TODO getUserPhoto
-        }
     }
 
     fun destroy() {
@@ -46,10 +32,5 @@ class MainActivityPresenter @Inject constructor(private val view: MainActivity,
         if (!compositeDisposable.isDisposed) {
             compositeDisposable.dispose()
         }
-    }
-
-    fun stopGoogleClient() {
-        googleApiClient.stopAutoManage(view)
-        googleApiClient.disconnect()
     }
 }

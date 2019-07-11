@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="message_content_out">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+        <item name="android:textColor">@color/colorChatMsgOutText</item>
+        <item name="android:textIsSelectable">true</item>
+    </style>
 </resources>

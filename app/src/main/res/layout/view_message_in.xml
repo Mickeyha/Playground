@@ -1,7 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-</LinearLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_pic"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_twotone_face_24px"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="56dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:maxWidth="286dp"
+            android:padding="16dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:background="@drawable/bg_layout_message_in"
+            app:layout_constraintTop_toTopOf="@id/user_pic"
+            app:layout_constraintStart_toEndOf="@+id/user_pic">
+
+        <TextView
+                android:id="@+id/messageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="200dp"
+                style="@style/message_content_out"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:text="My name is Owen, I’m 30 years old. Born and live in Taipei.\nNice to meet you!"/>
+
+        <ImageView
+                android:id="@+id/messageImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/messageTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:src="@drawable/ic_twotone_error_outline_24px"/>
+
+        <TextView
+                android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:maxWidth="100dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/messageImageView"
+                tools:text="OwenOwenOwenOwenOwenOwenOwenOwenOwenOwenOwen"
+                tools:ignore="SmallSp"/>
+
+        <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@id/userNameTextView"
+                app:layout_constraintBottom_toBottomOf="@id/userNameTextView"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:text="11/2"
+                tools:ignore="SmallSp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

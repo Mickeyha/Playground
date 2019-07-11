@@ -5,11 +5,11 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class ChatFragmentModule(private val view: ChatFragment) {
+class ChatActivityModule(private val view: ChatActivity) {
 
     @Provides
     fun provideView() = view
 
     @Provides
-    fun provideContext(): Context = view.requireContext()
+    fun provideContext(): Context = view
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
+class MainActivity : AppCompatActivity() {
 
     @field:[Inject]
     internal lateinit var presenter: MainActivityPresenter
@@ -58,16 +59,7 @@ class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
             is State.FinishLoading -> {
 
             }
-            is State.LaunchSignInPage -> {
-                startActivity(Intent(this@MainActivity, SignInActivity::class.java))
-                finish()
-            }
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        presenter.stopGoogleClient()
     }
 
     override fun onDestroy() {
@@ -81,8 +73,14 @@ class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         return true
     }
 
-    override fun onConnectionFailed(result: ConnectionResult) {
-        Timber.e("onConnectionFailed, $result")
-        Toast.makeText(this@MainActivity, "onConnectionFailed!", Toast.LENGTH_SHORT )
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            R.id.menu_chat -> {
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 }
