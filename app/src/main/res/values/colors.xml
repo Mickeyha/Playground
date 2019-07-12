@@ -46,5 +46,5 @@
     <color name="colorChatMsgBg">#cd595a</color>
     <color name="colorChatMsgOutText">#707070</color>
     <color name="colorChatUserNameOutText">#808080</color>
-    <color name="colorChatSendButtonBg">#ffffff</color>
+    <color name="colorChatSendMessageBg">#ffffff</color>
 </resources>

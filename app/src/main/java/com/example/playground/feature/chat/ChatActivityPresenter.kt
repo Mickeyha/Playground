@@ -36,7 +36,7 @@ class ChatActivityPresenter @Inject constructor(val view: ChatActivity,
         const val MESSAGES_CHILD = "messages"   // top level of db
     }
     private var userName: String? = null
-    private var userPhotoUrl: Uri? = null
+    private var userPhotoUrl: String? = null
     private val compositeDisposable = CompositeDisposable()
 
     // firebase
@@ -58,7 +58,7 @@ class ChatActivityPresenter @Inject constructor(val view: ChatActivity,
             view.render(State.LaunchSignInPage)
         } else {    // get the pic of user
             userName = firebaseUser.displayName
-            userPhotoUrl = firebaseUser.photoUrl
+            userPhotoUrl = firebaseUser.photoUrl?.toString()
         }
         Timber.d("userName = $userName, userPhotoUrl = $userPhotoUrl")
         readMessageFromFirebase()
@@ -135,22 +135,10 @@ class ChatActivityPresenter @Inject constructor(val view: ChatActivity,
     }
 
     fun signOut() {
-        val commonConfirmDialog = CommonConfirmDialog(
-            context = context,
-            logoId = R.drawable.ic_twotone_error_outline_24px,
-            title = "Sign out",
-            content = "Do you really wanna sign out?",
-            cancelTitle = "No",
-            confirmTitle = "yes",
-            confirmListener = View.OnClickListener {
-                view.render(State.ShowConfirmSignOutDialog)
-                firebaseAuth.signOut()
-                Auth.GoogleSignInApi.signOut(googleApiClient)
-                userName = ANONYMOUS
-                view.render(State.LaunchSignInPage)
-            }
-        )
-        commonConfirmDialog.show()
+        firebaseAuth.signOut()
+        Auth.GoogleSignInApi.signOut(googleApiClient)
+        userName = ChatActivityPresenter.ANONYMOUS
+        view.render(State.LaunchSignInPage)
     }
 
     fun pause() {
@@ -161,5 +149,22 @@ class ChatActivityPresenter @Inject constructor(val view: ChatActivity,
     fun resume() {
         Timber.d("resume()")
         firebaseAdapter.startListening()
+    }
+
+    fun sendMessage(textMessage: String) {
+        val messageEntity = MessageEntity(
+            id = null,
+            text = textMessage,
+            name = userName,
+            photoUrl = userPhotoUrl,
+            imageUrl = null
+        )
+
+        databaseReference
+            .child(MESSAGES_CHILD)
+            .push()
+            .setValue(messageEntity)
+
+        view.render(State.ClearMessageEditTextView)
     }
 }

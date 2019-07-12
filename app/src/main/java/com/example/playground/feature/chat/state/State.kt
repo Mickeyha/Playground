@@ -9,5 +9,6 @@ sealed class State {
     object FinishLoading: State()
     object LaunchSignInPage: State()
     object ShowConfirmSignOutDialog: State()
+    object ClearMessageEditTextView: State()
     data class ShowRecyclerView(val firebaseRecyclerAdapter: FirebaseRecyclerAdapter<MessageEntity, ChatListViewHolder>): State()
 }

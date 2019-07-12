@@ -10,19 +10,26 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.playground.R
+import com.example.playground.data.entity.MessageEntity
 import com.example.playground.feature.chat.state.State
 import com.example.playground.feature.signin.SignInActivity
 import com.example.playground.utils.ViewHelper
+import com.example.playground.view.CommonConfirmDialog
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
+import com.jakewharton.rxbinding3.view.clicks
+import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_chat.*
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
     @field:[Inject]
     lateinit var presenter: ChatActivityPresenter
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +38,21 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         initViews()
         initInjections()
         presenter.create()
+        addListeners()
+    }
+
+    @SuppressLint("CheckResult")
+    private fun addListeners() {
+        // Send messages on click.
+        sendButton.clicks()
+            .throttleLast(500, TimeUnit.MILLISECONDS)
+            .filter { messageEditTextView.text.isNotEmpty() }
+            .map { messageEditTextView.text.toString() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                presenter.sendMessage(messageEditTextView.text.toString())
+
+            }
     }
 
     fun render(state: State) {
@@ -46,10 +68,24 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
                 startActivity(Intent(this@ChatActivity, SignInActivity::class.java))
             }
             is State.ShowConfirmSignOutDialog -> {
-
+                val commonConfirmDialog = CommonConfirmDialog(
+                    context = this@ChatActivity,
+                    logoId = R.drawable.ic_twotone_error_outline_24px,
+                    title = "Sign out",
+                    content = "Do you really wanna sign out?",
+                    cancelTitle = "No",
+                    confirmTitle = "yes",
+                    confirmListener = View.OnClickListener {
+                        presenter.signOut()
+                    }
+                )
+                commonConfirmDialog.show()
             }
             is State.ShowRecyclerView -> {
                 messageRecyclerView.adapter = state.firebaseRecyclerAdapter
+            }
+            is State.ClearMessageEditTextView -> {
+                messageEditTextView.setText("")
             }
         }
     }
@@ -87,7 +123,7 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         return when (item?.itemId) {
             R.id.menu_sign_out -> {
                 Timber.d("Sign out selected")
-                presenter.signOut()
+                render(State.ShowConfirmSignOutDialog)
                 true
             }
             else -> {
