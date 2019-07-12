@@ -12,6 +12,7 @@ import com.example.playground.R
 import com.example.playground.feature.chat.ChatActivity
 import com.example.playground.feature.main.application.MainApplication
 import com.example.playground.feature.main.state.State
+import com.example.playground.utils.ViewHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
+        ViewHelper.INSTANCE.changeActionBarColor(supportActionBar, this@MainActivity ,R.color.colorChatActionBar)
+
         val navHost = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
         setupBottomNavMenu(navHost.navController)

@@ -3,8 +3,7 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
             android:id="@+id/menu_chat"
-            android:icon="@drawable/ic_twotone_message_24px"
+            android:icon="@drawable/ic_outline_chat_bubble_outline_24px"
             android:title="@string/main_menu_chat"
-            android:iconTint="@color/grey"
             app:showAsAction="ifRoom"/>
 </menu>

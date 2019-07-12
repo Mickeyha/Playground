@@ -9,10 +9,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.playground.R
 import com.example.playground.feature.chat.state.State
 import com.example.playground.feature.signin.SignInActivity
+import com.example.playground.utils.ViewHelper
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.activity_chat.*
@@ -62,6 +62,10 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
     }
 
     private fun initViews() {
+        ViewHelper.INSTANCE. enableHomeAsUp(supportActionBar, true)
+        ViewHelper.INSTANCE.changeHomeAsUpColor(supportActionBar, this@ChatActivity, R.color.grey)
+        ViewHelper.INSTANCE.changeActionBarColor(supportActionBar, this@ChatActivity ,R.color.colorChatActionBar)
+
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.stackFromEnd = true
         messageRecyclerView.layoutManager = linearLayoutManager
