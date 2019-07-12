@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.playground.R
+import com.example.playground.feature.chat.ChatActivity
 import com.example.playground.feature.main.MainActivity
 import com.example.playground.feature.signin.state.State
 import com.google.android.gms.common.ConnectionResult
@@ -40,6 +41,7 @@ class SignInActivity : AppCompatActivity(),
     }
 
     private fun initViews() {
+        supportActionBar?.hide()
         sign_in_image.colorFilter = LightingColorFilter(Color.WHITE, Color.DKGRAY)
         clickSignInWithGoogleIntent = sign_in_google_button.clicks()
     }
@@ -63,7 +65,7 @@ class SignInActivity : AppCompatActivity(),
                 startActivityForResult(state.intent, RC_SIGN_IN)
             }
             is State.LaunchMainActivity -> {
-                startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                startActivity(Intent(this@SignInActivity, ChatActivity::class.java))
                 finish()
             }
         }

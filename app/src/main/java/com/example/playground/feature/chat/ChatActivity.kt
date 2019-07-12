@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.playground.R
-import com.example.playground.data.entity.MessageEntity
 import com.example.playground.feature.chat.state.State
 import com.example.playground.feature.signin.SignInActivity
 import com.example.playground.utils.ViewHelper
@@ -29,6 +28,7 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
     @field:[Inject]
     lateinit var presenter: ChatActivityPresenter
 
+    lateinit var linearLayoutManager: LinearLayoutManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +66,7 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
             }
             is State.LaunchSignInPage -> {
                 startActivity(Intent(this@ChatActivity, SignInActivity::class.java))
+                finish()
             }
             is State.ShowConfirmSignOutDialog -> {
                 val commonConfirmDialog = CommonConfirmDialog(
@@ -87,6 +88,9 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
             is State.ClearMessageEditTextView -> {
                 messageEditTextView.setText("")
             }
+            is State.ScrollToPosition -> {
+                messageRecyclerView.scrollToPosition(state.position)
+            }
         }
     }
 
@@ -102,7 +106,7 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
         ViewHelper.INSTANCE.changeHomeAsUpColor(supportActionBar, this@ChatActivity, R.color.grey)
         ViewHelper.INSTANCE.changeActionBarColor(supportActionBar, this@ChatActivity ,R.color.colorChatActionBar)
 
-        val linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.stackFromEnd = true
         messageRecyclerView.layoutManager = linearLayoutManager
     }

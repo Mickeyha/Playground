@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.activity_chat.*
 import timber.log.Timber
 import javax.inject.Inject
 import com.firebase.ui.database.FirebaseRecyclerOptions.Builder as Builder1
@@ -122,6 +123,19 @@ class ChatActivityPresenter @Inject constructor(val view: ChatActivity,
         firebaseAdapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver(){
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
                 super.onItemRangeInserted(positionStart, itemCount)
+                val recyclerViewCount = firebaseAdapter.itemCount
+                val lastVisibleCount = view.linearLayoutManager.findLastCompletelyVisibleItemPosition()
+
+                // If the recycler view is initially being loaded or the
+                // user is at the bottom of the list, scroll to the bottom
+                // of the list to show the newly added message.
+                Timber.d("lastVisibleCount = $lastVisibleCount")
+                Timber.d("positionStart = $positionStart")
+                Timber.d("recyclerViewCount = $recyclerViewCount")
+                if (lastVisibleCount == -1 ||
+                        positionStart >= (recyclerViewCount - 1) && lastVisibleCount == (positionStart - 1)) {
+                    view.render(State.ScrollToPosition(positionStart))
+                }
             }
         })
 
