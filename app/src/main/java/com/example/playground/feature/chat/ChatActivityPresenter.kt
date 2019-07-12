@@ -6,6 +6,7 @@ import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.playground.R
 import com.example.playground.data.entity.MessageEntity
@@ -47,11 +48,11 @@ class ChatActivityPresenter @Inject constructor(val view: ChatActivity,
     private val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().reference
     lateinit var firebaseAdapter: FirebaseRecyclerAdapter<MessageEntity, ChatListViewHolder>
 
-
     fun create() {
         Timber.d("create")
         userName = ANONYMOUS
 
+        view.render(State.StartLoading)
         // Not sign in yet, launch the SignInActivity
         if (firebaseUser == null) {
             view.render(State.LaunchSignInPage)
@@ -64,17 +65,20 @@ class ChatActivityPresenter @Inject constructor(val view: ChatActivity,
     }
 
     private fun readMessageFromFirebase() {
-        // get message from rememote
+        // get message from remote
         val parser = SnapshotParser<MessageEntity> { dataSnapshot ->
             val message = dataSnapshot.getValue<MessageEntity>(MessageEntity::class.java)
             if (message != null) {
+                Timber.d("Message != null")
                 message.id = dataSnapshot.key
                 return@SnapshotParser message
             }
+            Timber.d("Message is null")
             MessageEntity()
         }
 
-        val messagesRef: DatabaseReference = databaseReference.child(MESSAGES_CHILD)
+        val messagesRef: DatabaseReference = databaseReference
+            .child(MESSAGES_CHILD)
         val options = FirebaseRecyclerOptions.Builder<MessageEntity>()
             .setQuery(messagesRef, parser)
             .build()
@@ -114,6 +118,13 @@ class ChatActivityPresenter @Inject constructor(val view: ChatActivity,
                 }
             }
         }
+
+        firebaseAdapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver(){
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                super.onItemRangeInserted(positionStart, itemCount)
+            }
+        })
+
         view.render(State.ShowRecyclerView(firebaseAdapter))
     }
 
@@ -143,10 +154,12 @@ class ChatActivityPresenter @Inject constructor(val view: ChatActivity,
     }
 
     fun pause() {
-        firebaseAdapter.startListening()
+        Timber.d("pause()")
+        firebaseAdapter.stopListening()
     }
 
     fun resume() {
-        firebaseAdapter.stopListening()
+        Timber.d("resume()")
+        firebaseAdapter.startListening()
     }
 }

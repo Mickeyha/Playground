@@ -9,15 +9,9 @@ import com.example.playground.R
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ChatListViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-    @BindView(R.id.messageTextView)
-    lateinit var messageTextView: TextView
 
-    @BindView(R.id.messageImageView)
-    lateinit var messageImageView: ImageView
-
-    @BindView(R.id.userNameTextView)
-    lateinit var userNameTextView: TextView
-
-    @BindView(R.id.userPicImageView)
-    lateinit var userPicImageView: CircleImageView
+    val messageTextView: TextView = v.findViewById(R.id.messageTextView)
+    val messageImageView: ImageView = v.findViewById(R.id.messageImageView)
+    val userNameTextView: TextView = v.findViewById(R.id.userNameTextView)
+    val userPicImageView: CircleImageView = v.findViewById(R.id.userPicImageView)
 }

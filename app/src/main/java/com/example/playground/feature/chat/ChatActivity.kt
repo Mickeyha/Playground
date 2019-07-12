@@ -34,6 +34,7 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
     }
 
     fun render(state: State) {
+        Timber.d("render $state")
         when (state) {
             is State.StartLoading -> {
                 progressBar.visibility = View.VISIBLE
@@ -98,12 +99,14 @@ class ChatActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
     }
 
     override fun onPause() {
-        super.onPause()
         presenter.pause()
+        super.onPause()
+
     }
 
     override fun onPostResume() {
-        super.onPostResume()
         presenter.resume()
+        super.onPostResume()
+
     }
 }
