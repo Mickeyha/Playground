@@ -7,7 +7,7 @@
                                                    android:layout_height="match_parent">
 
     <ImageView
-            android:id="@+id/user_pic"
+            android:id="@+id/userPicImageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/ic_twotone_face_24px"
@@ -25,8 +25,8 @@
             android:textSize="20sp"
             android:layout_marginStart="50dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/user_pic"
-            app:layout_constraintBottom_toBottomOf="@+id/user_pic"/>
+            app:layout_constraintTop_toTopOf="@+id/userPicImageView"
+            app:layout_constraintBottom_toBottomOf="@+id/userPicImageView"/>
 
     <View
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:layout_marginEnd="50dp"
             app:layout_constraintStart_toStartOf="@id/sign_out_layout"
             app:layout_constraintEnd_toEndOf="@id/sign_out_layout"
-            app:layout_constraintTop_toBottomOf="@+id/user_pic"/>
+            app:layout_constraintTop_toBottomOf="@+id/userPicImageView"/>
 
 
     <RelativeLayout
@@ -47,7 +47,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="80dp"
-            app:layout_constraintTop_toBottomOf="@+id/user_pic"
+            app:layout_constraintTop_toBottomOf="@+id/userPicImageView"
             app:layout_constraintStart_toStartOf="parent">
 
         <TextView

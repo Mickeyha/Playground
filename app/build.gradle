@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.jakewharton.butterknife'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -23,7 +25,15 @@ android {
         }
     }
     kapt {
+        // epoxy
+        correctErrorTypes = true
+
         generateStubs = true
+    }
+    // Butterknife requires Java 8.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -39,10 +49,16 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.23.1'
     kapt 'com.google.dagger:dagger-compiler:2.23.1'
 
-    // firebase
-    implementation 'com.google.firebase:firebase-core:17.0.0'
-    implementation 'com.google.firebase:firebase-auth:18.0.0'
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:17.0.0')
+    implementation 'com.google.firebase:firebase-core'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-storage'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    // Firebase UI
+    implementation 'com.firebaseui:firebase-ui-database:3.3.1'
 
     // timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
@@ -88,6 +104,14 @@ dependencies {
     // circleImageView
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
+    // epoxy
+    implementation 'com.airbnb.android:epoxy:3.7.0'
+    annotationProcessor 'com.airbnb.android:epoxy-processor:3.7.0'
+
+    // Butterknife
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    kapt 'com.jakewharton:butterknife-compiler:10.1.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -97,3 +121,4 @@ dependencies {
 
 // firebase
 apply plugin: 'com.google.gms.google-services'
+

@@ -5,16 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.playground.R
+import com.example.playground.feature.chat.ChatActivity
 import com.example.playground.feature.main.application.MainApplication
 import com.example.playground.feature.main.state.State
-import com.example.playground.feature.signin.SignInActivity
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -59,6 +56,9 @@ class MainActivity : AppCompatActivity() {
             is State.FinishLoading -> {
 
             }
+            is State.LaunchChatPage -> {
+                startActivity(Intent(this@MainActivity, ChatActivity::class.java))
+            }
         }
     }
 
@@ -76,6 +76,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             R.id.menu_chat -> {
+                Timber.d("menu_chat pressed")
+                render(State.LaunchChatPage)
                 true
             }
             else -> {

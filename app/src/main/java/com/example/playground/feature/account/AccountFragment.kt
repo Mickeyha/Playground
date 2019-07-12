@@ -56,7 +56,7 @@ class AccountFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
                 user_name.text = state.firebaseUser.displayName
                 Glide.with(requireContext())
                     .load(state.firebaseUser.photoUrl)
-                    .into(user_pic)
+                    .into(userPicImageView)
             }
         }
     }
