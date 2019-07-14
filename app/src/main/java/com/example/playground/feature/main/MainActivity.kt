@@ -10,7 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.playground.R
 import com.example.playground.feature.chat.ChatActivity
-import com.example.playground.feature.main.application.MainApplication
+import com.example.playground.feature.application.MainApplication
 import com.example.playground.feature.main.state.State
 import com.example.playground.utils.ViewHelper
 import kotlinx.android.synthetic.main.activity_main.*

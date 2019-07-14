@@ -1,4 +1,4 @@
-package com.example.playground.feature.main.application
+package com.example.playground.feature.application
 
 import android.app.Application
 import timber.log.Timber

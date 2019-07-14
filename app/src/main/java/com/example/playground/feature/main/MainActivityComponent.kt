@@ -1,6 +1,6 @@
 package com.example.playground.feature.main
 
-import com.example.playground.feature.main.application.MainApplicationComponent
+import com.example.playground.feature.application.MainApplicationComponent
 import dagger.Component
 
 @Component (modules = [MainActivityModule::class], dependencies = [MainApplicationComponent::class])
