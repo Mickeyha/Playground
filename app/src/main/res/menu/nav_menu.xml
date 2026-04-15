@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-            android:id="@+id/city_des"
-            android:icon="@drawable/ic_twotone_location_on_24px"
-            android:title="@string/nav_des_city"/>
-    <item
-            android:id="@+id/eat_des"
-            android:icon="@drawable/ic_twotone_room_service_24px"
-            android:title="@string/nav_des_eat"/>
 
     <item
-            android:id="@+id/shop_des"
-            android:icon="@drawable/ic_twotone_local_mall_24px"
-            android:title="@string/nav_des_shop"/>
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_twotone_directions_run_24px"
+        android:title="@string/nav_home" />
 
     <item
-            android:id="@+id/profile_des"
-            android:icon="@drawable/ic_twotone_account_circle_24px"
-            android:title="@string/nav_des_account"/>
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_baseline_pets_24px"
+        android:title="@string/nav_search" />
+
+    <item
+        android:id="@+id/favoriteFragment"
+        android:icon="@drawable/ic_twotone_face_24px"
+        android:title="@string/nav_favorite" />
+
 </menu>

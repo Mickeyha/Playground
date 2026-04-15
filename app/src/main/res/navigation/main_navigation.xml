@@ -1,21 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/main_navigation" app:startDestination="@id/city_des">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment">
 
-    <fragment android:id="@+id/city_des" android:name="com.example.playground.feature.cityguide.CityGuideFragment"
-              android:label="CityGuideFragment">
-        <action android:id="@+id/action_cityGuideFragment_to_chatFragment" app:destination="@id/chat_des"
-        />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.playground.feature.home.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/detailFragment" />
     </fragment>
-    <fragment android:id="@+id/eat_des" android:name="com.example.playground.feature.eat.EatFragment"
-              android:label="EatFragment"/>
-    <fragment android:id="@+id/shop_des" android:name="com.example.playground.feature.shop.ShopFragment"
-              android:label="ShopFragment"/>
-    <fragment android:id="@+id/profile_des" android:name="com.example.playground.feature.account.AccountFragment"
-              android:label="AccountFragment"/>
-    <fragment android:id="@+id/chat_des" android:name="com.example.playground.feature.chat.ChatFragment"
-              android:label="ChatFragment">
-        <action android:id="@+id/action_chatFragment_to_accountFragment" app:destination="@id/profile_des"/>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.playground.feature.search.SearchFragment"
+        android:label="@string/nav_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_search_to_detail"
+            app:destination="@id/detailFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.playground.feature.favorite.FavoriteFragment"
+        android:label="@string/nav_favorite"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_favorite_to_detail"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.playground.feature.detail.DetailFragment"
+        android:label="@string/nav_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+
 </navigation>

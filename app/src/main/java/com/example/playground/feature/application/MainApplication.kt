@@ -1,27 +1,20 @@
 package com.example.playground.feature.application
 
 import android.app.Application
+import com.example.playground.di.AppComponent
+import com.example.playground.di.AppModule
+import com.example.playground.di.DaggerAppComponent
 import timber.log.Timber
 
-class MainApplication: Application() {
+class MainApplication : Application() {
 
-    lateinit var appComponent: MainApplicationComponent
+    lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()
-        initDebug()
-        initInjections()
-    }
-
-    private fun initInjections() {
-        appComponent = DaggerMainApplicationComponent.builder()
-            .mainApplicationModule(MainApplicationModule(this))
-            .build()
-            .also { it.inject(this@MainApplication) }
-
-    }
-
-    private fun initDebug() {
         Timber.plant(Timber.DebugTree())
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .build()
     }
 }
